@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Seznam studentů - Client</title>
+</head>
+
+<body>
+
+<script>
+
+function load() {
+
+    var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+
+    fetch("http://localhost:8080/students", requestOptions)
+    .then(response => response.json())
+    .then(result => {
+        console.log(result);
+        document.getElementById("studentList").innerHTML = "";
+        result.forEach((e) => {
+            newItem = document.createElement("div");
+            newItem.innerText = (e?.id.toString() + "-" + e?.jmeno + "-" + e?.prijmeni + "-" + e?.vek.toString());
+            document.getElementById("studentList").appendChild(newItem);
+        })
+    })
+    .catch(error => console.log('error - function load', error));
+}
+
+load();
+
+function addValue(){
+
+    var myHeaders = new Headers();
+
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+        "jmeno":    document.getElementById("jmeno").value,
+        "prijmeni": document.getElementById("prijmeni").value,
+        "vek":      document.getElementById("vek").value
+    });
+
+    var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+    };
+
+    fetch("http://localhost:8080/students", requestOptions)
+    .then(response => response.text())
+    .then(result => {
+        console.log(result);
+        load();
+     })
+    .catch(error => console.log('error - function addValue', error));
+}
+
+</script>
+
+<h1>Studenti (HashMapa)</h1>
+
+<div id="studentList"></div>
+
+<div>
+<input  id="jmeno" type="text">
+<input  id="prijmeni" type="text">
+<input  id="vek" type="text">
+<button id="add-button" onclick="addValue()">ADD</button>
+</div>
+
+
+</body>
+
+</html>

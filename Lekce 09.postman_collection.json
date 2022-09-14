@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "c60f63f1-9e3a-499f-8920-fd3256bfe232",
+		"name": "Lekce 09",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23286704"
+	},
+	"item": [
+		{
+			"name": "ÚKOL (Kolekce studentů - HashMap)",
+			"item": [
+				{
+					"name": "Student - GET All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/student",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Student - GET Existing (123)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Student - POST Add new (123)",
+					"protocolProfileBehavior": {
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1234,\r\n    \"jmeno\": \"František\",\r\n    \"prijmeni\": \"Dobrota\",\r\n    \"vek\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/students/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"students",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Student - PUT Update Existing (123)",
+					"protocolProfileBehavior": {
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 123,\r\n    \"jmeno\": \"John\",\r\n    \"prijmeni\": \"Silverad\",\r\n    \"vek\": 99.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/students/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"students",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Student - POST Multi Add",
+					"protocolProfileBehavior": {
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 123,\r\n    \"jmeno\": \"Johny\",\r\n    \"prijmeni\": \"Silverado\",\r\n    \"vek\": 9.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/students/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"students",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Student - DELETE Remove Existing (123)",
+					"protocolProfileBehavior": {
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,  \r\n    \"jmeno\": \"František\",\r\n    \"prijmeni\": \"Lakota\",\r\n    \"vek\":61\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/student/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Student - Test Error",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/error?hodnota=PopisChyby",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"error"
+							],
+							"query": [
+								{
+									"key": "hodnota",
+									"value": "PopisChyby"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
